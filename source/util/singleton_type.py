@@ -1,4 +1,4 @@
-## data_frontend.py -- internal data rest API for CRIM
+## singleton_type.py -- singleton metaclass
 ##
 ## This file is part of CRIM -- Competitive Robotics Inspection Management
 ## Hosted at github.com/robot-inspection/crim
@@ -8,8 +8,10 @@
 ##
 ### ******************************************************************* ###
 
-from flask import Flask
-from flask_restful import reqparse, abort, Api, Resource
-
-
-
+class singleton_type(type):
+    def __call__(cls, *args, **kwargs):
+        try:
+            return cls.__instance
+        except AttributeError:
+            cls.__instance = super(singleton_type, cls).__call__(*args, **kwargs)
+            return cls.__instance

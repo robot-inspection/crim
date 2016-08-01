@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS checklist_item
 (
     uid BINARY(16) NOT NULL,
     type BINARY(16),
+    checklist_text VARCHAR(64),
     rule_ref BINARY(16),
     pass_cond BINARY(16),
     PRIMARY KEY(uid)
