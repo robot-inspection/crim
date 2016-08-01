@@ -109,12 +109,14 @@ CREATE TABLE IF NOT EXISTS user_permissions
 (
     uid BINARY(16) NOT NULL,
     user_uid BINARY(16),
+    permissions VARCHAR(16),
     PRIMARY KEY(uid)
 );
 
 CREATE TABLE IF NOT EXISTS inspection_data_type
 (
     uid BINARY(16) NOT NULL,
+    typename VARCHAR(16),
     PRIMARY KEY(uid)
 );
 
@@ -132,6 +134,7 @@ CREATE TABLE IF NOT EXISTS transactions
     uid BINARY(16) NOT NULL,
     user BINARY(16),
     timestamp DATETIME,
+    transaction_type VARCHAR(16),
     transaction_text VARCHAR(64),
     PRIMARY KEY(uid)
 );
@@ -139,7 +142,7 @@ CREATE TABLE IF NOT EXISTS transactions
 CREATE TABLE IF NOT EXISTS checklist_item_pass_cond
 (
     uid BINARY(16) NOT NULL,
-    condition VARCHAR(32),
+    pass_condition VARCHAR(32),
     PRIMARY KEY(uid)
 );
 
