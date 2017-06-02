@@ -8,20 +8,23 @@
 ##
 ### ******************************************************************* ###
 
-from flask_restful import  Resource
+from flask_restful import Resource
 from connectionpool import ConnectionPool
 
 class ListOfChecklists(Resource):
+
+    def __init__(self, query_string):
+        self.query = query_string
+
     def get(self):
-        return self.get_checklists()
+        return self.get_result()
 
     def post(self):
         pass
 
 
-    def get_checklists(self):
-        sql_string = 'SELECT * FROM inspection_checklist;'
+    def get_result(self):
         cursor = ConnectionPool().get_cursor()
-        result = cursor.execute(sql_string)
+        result = cursor.execute(self.query)
         ConnectionPool().free_cursor(cursor)
         return result

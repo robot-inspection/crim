@@ -8,7 +8,6 @@
 ##
 ### ******************************************************************* ###
 
-import Checklist
-import ListOfChecklists
+import SqlQuery
 
-__all__ = ["Checklist", "ListOfChecklists"]
+__all__ = ['SqlQuery']
